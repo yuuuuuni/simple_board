@@ -13,4 +13,8 @@ public class MemberService {
     public void join(MemberVO memberVO) {
         memberMapper.join(memberVO);
     }
+
+    public MemberVO login(MemberVO memberVO) {
+        return memberMapper.login(memberVO);
+    }
 }

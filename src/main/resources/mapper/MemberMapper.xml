@@ -6,4 +6,10 @@
         insert into member(member_id, password, name, phone, email, create_dt)
         values(#{memberId}, #{password}, #{name}, #{phone}, #{email}, now())
     </insert>
+
+    <select id="login" parameterType="com.practice.simple_board.vo.MemberVO" resultType="com.practice.simple_board.vo.MemberVO">
+        select id, member_id, password, name, phone, email, create_dt, update_dt
+        from member
+        where member_id = #{memberId} and password = #{password}
+    </select>
 </mapper>

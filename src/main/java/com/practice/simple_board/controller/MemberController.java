@@ -35,11 +35,9 @@ public class MemberController {
 
         if (loginVO == null) { //아이디와 패스워드가 틀린 경우
             return "redirect:/member/login";
-        } else { //아이디 패스워드가 맞는 경우
+        } else { //아이디와 패스워드가 맞는 경우
             session.setAttribute("member", loginVO);
-            //session에 loginVO가 잘 담겼는지 확인
-            System.out.println(session.getAttribute("member"));
-            return "redirect:/member/home";
+            return "redirect:/";
         }
     }
 }

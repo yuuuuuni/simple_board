@@ -9,11 +9,16 @@
     <h1>메인</h1>
 
     <div th:if="${member != null}">
-      <h2><sapn th:text="${member.memberId}"></sapn>님 환영합니다.</h2>
+      <h2><span th:text="${member.memberId}"></span>님 환영합니다.</h2>
     </div>
     <div th:if="${member == null}">
       <button><a href="/member/login">로그인</a></button>
       <button><a href="/member/join">회원가입</a></button>
+    </div>
+    <div th:if="${member != null}">
+      <form th:action="@{/member/logout}" method="post">
+        <button>로그아웃</button>
+      </form>
     </div>
   </center>
 </body>

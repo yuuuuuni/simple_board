@@ -1,6 +1,6 @@
-package com.practice.simple_board.controller;
+package com.practice.simple_board;
 
-import com.practice.simple_board.vo.MemberVO;
+import com.practice.simple_board.member.vo.MemberVO;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,4 +1,4 @@
-package com.practice.simple_board.vo;
+package com.practice.simple_board.member.vo;
 
 import lombok.Data;
 

@@ -1,10 +1,11 @@
-package com.practice.simple_board.controller;
+package com.practice.simple_board.member.controller;
 
-import com.practice.simple_board.service.MemberService;
-import com.practice.simple_board.vo.MemberVO;
+import com.practice.simple_board.member.service.MemberService;
+import com.practice.simple_board.member.vo.MemberVO;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -46,5 +47,12 @@ public class MemberController {
         session.removeAttribute("member");
         session.invalidate(); //세션 무효화
         return "redirect:/member/login";
+    }
+
+    @GetMapping("/mypage/{memberId}")
+    public String mypage(@PathVariable("memberId") String memberId, Model model) {
+        MemberVO memberVO = memberService.selectOneByMemberId(memberId);
+        model.addAttribute("member", memberVO);
+        return "member/mypage";
     }
 }

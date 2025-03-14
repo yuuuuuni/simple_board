@@ -1,7 +1,7 @@
-package com.practice.simple_board.service;
+package com.practice.simple_board.member.service;
 
-import com.practice.simple_board.mapper.MemberMapper;
-import com.practice.simple_board.vo.MemberVO;
+import com.practice.simple_board.member.mapper.MemberMapper;
+import com.practice.simple_board.member.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +16,9 @@ public class MemberService {
 
     public MemberVO login(MemberVO memberVO) {
         return memberMapper.login(memberVO);
+    }
+
+    public MemberVO selectOneByMemberId(String memberId) {
+        return memberMapper.selectOneByMemberId(memberId);
     }
 }

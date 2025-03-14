@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.practice.simple_board.mapper.MemberMapper">
-    <insert id="join" parameterType="com.practice.simple_board.vo.MemberVO">
+<mapper namespace="com.practice.simple_board.member.mapper.MemberMapper">
+    <insert id="join" parameterType="com.practice.simple_board.member.vo.MemberVO">
         insert into member(member_id, password, name, phone, email, create_dt)
         values(#{memberId}, #{password}, #{name}, #{phone}, #{email}, now())
     </insert>
 
-    <select id="login" parameterType="com.practice.simple_board.vo.MemberVO" resultType="com.practice.simple_board.vo.MemberVO">
+    <select id="login" parameterType="com.practice.simple_board.member.vo.MemberVO" resultType="com.practice.simple_board.member.vo.MemberVO">
         select id, member_id, password, name, phone, email, create_dt, update_dt
         from member
         where member_id = #{memberId} and password = #{password}
+    </select>
+
+    <select id="selectOneByMemberId" parameterType="String" resultType="com.practice.simple_board.member.vo.MemberVO">
+        select id, member_id, password, name, phone, email, create_dt, update_dt
+        from member
+        where member_id = #{memberId}
     </select>
 </mapper>

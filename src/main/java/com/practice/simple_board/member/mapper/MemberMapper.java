@@ -1,6 +1,6 @@
-package com.practice.simple_board.mapper;
+package com.practice.simple_board.member.mapper;
 
-import com.practice.simple_board.vo.MemberVO;
+import com.practice.simple_board.member.vo.MemberVO;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
@@ -8,4 +8,6 @@ public interface MemberMapper {
     void join(MemberVO memberVO);
 
     MemberVO login(MemberVO memberVO);
+
+    MemberVO selectOneByMemberId(String memberId);
 }

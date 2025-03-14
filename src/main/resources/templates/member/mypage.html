@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>mypage</title>
+</head>
+<body>
+<center>
+    <h1>마이페이지</h1>
+
+    <table>
+        <tr>
+            <th>회원번호</th>
+            <td th:text="${member.id}"></td>
+        </tr>
+        <tr>
+            <th>아이디</th>
+            <td th:text="${member.memberId}"></td>
+        </tr>
+        <tr>
+            <th>비밀번호</th>
+            <td>
+                <input type="password" id="password" name="password">
+            </td>
+        </tr>
+        <tr>
+            <th>비밀번호 확인</th>
+            <td>
+                <input type="password" id="passwordCnf" name="passwordCnf">
+            </td>
+        </tr>
+        <tr>
+            <th>이름</th>
+            <td th:text="${member.name}"></td>
+        </tr>
+        <tr>
+            <th>전화번호</th>
+            <td>
+                <input type="text" id="phone" name="phone" th:value="${member.phone}">
+            </td>
+        </tr>
+        <tr>
+            <th>이메일</th>
+            <td>
+                <input type="text" id="email" name="email" th:value="${member.email}">
+            </td>
+        </tr>
+        <tr>
+            <th>가입일자</th>
+            <td th:text="${member.createDt}"></td>
+        </tr>
+        <tr>
+            <th>수정일자</th>
+            <td th:text="${member.updateDt}"></td>
+        </tr>
+    </table>
+</center>
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>mypage</title>
+    <title>마이페이지</title>
 </head>
 <body>
 <center>
@@ -20,13 +20,13 @@
         <tr>
             <th>비밀번호</th>
             <td>
-                <input type="password" id="password" name="password">
+                <span>********</span>
             </td>
         </tr>
         <tr>
             <th>비밀번호 확인</th>
             <td>
-                <input type="password" id="passwordCnf" name="passwordCnf">
+                <span>********</span>
             </td>
         </tr>
         <tr>
@@ -35,15 +35,11 @@
         </tr>
         <tr>
             <th>전화번호</th>
-            <td>
-                <input type="text" id="phone" name="phone" th:value="${member.phone}">
-            </td>
+            <td th:text="${member.phone}"></td>
         </tr>
         <tr>
             <th>이메일</th>
-            <td>
-                <input type="text" id="email" name="email" th:value="${member.email}">
-            </td>
+            <td th:text="${member.email}"></td>
         </tr>
         <tr>
             <th>가입일자</th>
@@ -54,6 +50,10 @@
             <td th:text="${member.updateDt}"></td>
         </tr>
     </table>
+
+    <div>
+        <button><a th:href="@{|/member/mypage/${member.memberId}/update|}">수정</a></button>
+    </div>
 </center>
 </body>
 </html>

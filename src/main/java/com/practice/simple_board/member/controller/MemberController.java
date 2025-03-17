@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Member;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/member")
@@ -54,5 +56,19 @@ public class MemberController {
         MemberVO memberVO = memberService.selectOneByMemberId(memberId);
         model.addAttribute("member", memberVO);
         return "member/mypage";
+    }
+
+    @GetMapping("/mypage/{memberId}/update")
+    public String memberUpdateForm(@PathVariable("memberId") String memberId, Model model) {
+        MemberVO memberVO = memberService.selectOneByMemberId(memberId);
+        model.addAttribute("member", memberVO);
+        return "member/memberUpdate";
+    }
+
+    @PostMapping("/mypage/{memberId}/update")
+    public String memberUpdate(@PathVariable("memberId") String memberId, @ModelAttribute MemberVO memberVO) {
+        MemberVO dbMemberVO = memberService.selectOneByMemberId(memberId);
+        memberService.memberUpdate(dbMemberVO, memberVO);
+        return "redirect:/member/mypage/{memberId}";
     }
 }

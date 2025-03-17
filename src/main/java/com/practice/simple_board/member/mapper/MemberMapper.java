@@ -10,4 +10,8 @@ public interface MemberMapper {
     MemberVO login(MemberVO memberVO);
 
     MemberVO selectOneByMemberId(String memberId);
+
+    void memberUpdatePw(MemberVO dbMemberVO);
+
+    void memberUpdate(MemberVO dbMemberVO);
 }

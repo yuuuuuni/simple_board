@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>정보 수정</title>
+</head>
+<body>
+    <center>
+        <form th:action="@{|/member/mypage/${member.memberId}/update|}" method="post">
+            <h1>정보 수정</h1>
+
+            <table>
+                <tr>
+                    <th>회원번호</th>
+                    <td><input type="text" id="id" name="id" th:value="${member.id}" readonly></td>
+                </tr>
+                <tr>
+                    <th>아이디</th>
+                    <td><input type="text" id="memberId" name="memberId" th:value="${member.memberId}" readonly></td>
+                </tr>
+                <tr>
+                    <th>새 비밀번호</th>
+                    <td><input type="password" id="password" name="password"></td>
+                </tr>
+                <tr>
+                    <th>새 비밀번호 확인</th>
+                    <td><input type="password" id="passwordCnf" name="passwordCnf"></td>
+                </tr>
+                <tr>
+                    <th>이름</th>
+                    <td><input type="text" id="name" name="name" th:value="${member.name}" readonly></td>
+                </tr>
+                <tr>
+                    <th>전화번호</th>
+                    <td><input type="text" id="phone" name="phone" th:value="${member.phone}"></td>
+                </tr>
+                <tr>
+                    <th>이메일</th>
+                    <td><input type="text" id="email" name="email" th:value="${member.email}"></td>
+                </tr>
+                <tr>
+                    <th>가입일자</th>
+                    <td><input type="text" id="createDt" name="createDt" th:value="${member.createDt}" readonly></td>
+                </tr>
+                <tr>
+                    <th>수정일자</th>
+                    <td><input type="text" id="updateDt" name="updateDt" th:value="${member.updateDt}" readonly></td>
+                </tr>
+            </table>
+
+            <div>
+                <button>변경</button>
+            </div>
+        </form>
+    </center>
+</body>
+</html>

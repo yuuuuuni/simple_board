@@ -5,6 +5,8 @@ import com.practice.simple_board.member.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class MemberService {
@@ -20,5 +22,17 @@ public class MemberService {
 
     public MemberVO selectOneByMemberId(String memberId) {
         return memberMapper.selectOneByMemberId(memberId);
+    }
+
+    public void memberUpdate(MemberVO dbMemberVO, MemberVO memberVO) {
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!! memberVO.getPassword: " + memberVO.getPassword());
+        if (!dbMemberVO.getPassword().equals(memberVO.getPassword()) && !memberVO.getPassword().isEmpty()) {
+            dbMemberVO.setPassword(memberVO.getPassword());
+        }
+            dbMemberVO.setPhone(memberVO.getPhone());
+            dbMemberVO.setEmail(memberVO.getEmail());
+            dbMemberVO.setUpdateDt(LocalDateTime.now());
+            memberMapper.memberUpdate(dbMemberVO);
+
     }
 }

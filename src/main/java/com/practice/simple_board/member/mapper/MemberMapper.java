@@ -11,7 +11,5 @@ public interface MemberMapper {
 
     MemberVO selectOneByMemberId(String memberId);
 
-    void memberUpdatePw(MemberVO dbMemberVO);
-
     void memberUpdate(MemberVO dbMemberVO);
 }

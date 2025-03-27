@@ -12,11 +12,11 @@
             <table>
                 <tr>
                     <th>회원번호</th>
-                    <td><input type="text" id="id" name="id" th:value="${member.id}" readonly></td>
+                    <td th:text="${member.id}"></td>
                 </tr>
                 <tr>
                     <th>아이디</th>
-                    <td><input type="text" id="memberId" name="memberId" th:value="${member.memberId}" readonly></td>
+                    <td th:text="${member.memberId}"></td>
                 </tr>
                 <tr>
                     <th>새 비밀번호</th>
@@ -28,7 +28,7 @@
                 </tr>
                 <tr>
                     <th>이름</th>
-                    <td><input type="text" id="name" name="name" th:value="${member.name}" readonly></td>
+                    <td th:text="${member.name}"></td>
                 </tr>
                 <tr>
                     <th>전화번호</th>
@@ -40,11 +40,11 @@
                 </tr>
                 <tr>
                     <th>가입일자</th>
-                    <td><input type="text" id="createDt" name="createDt" th:value="${member.createDt}" readonly></td>
+                    <td th:text="${member.createDt}"></td>
                 </tr>
                 <tr>
                     <th>수정일자</th>
-                    <td><input type="text" id="updateDt" name="updateDt" th:value="${member.updateDt}" readonly></td>
+                    <td th:text="${member.updateDt}"></td>
                 </tr>
             </table>
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
     @GetMapping("/")
     public String index(HttpSession session, Model model) {
+        //session에서 로그인 정보를 가져올 때 Object 타입으로 가져오므로 사용할 타입에 맞게 형변환 필요
         MemberVO memberVO = (MemberVO) session.getAttribute("member");
         model.addAttribute("member", memberVO);
         return "index";

@@ -16,4 +16,5 @@ public class MemberVO {
     private String email;
     private LocalDateTime createDt;
     private LocalDateTime updateDt;
+    private String deleteYn;
 }

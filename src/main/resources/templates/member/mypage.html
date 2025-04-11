@@ -53,6 +53,9 @@
 
     <div>
         <button><a th:href="@{|/member/mypage/${member.memberId}/update|}">수정</a></button>
+        <form th:action="@{|/member/mypage/${member.memberId}/delete|}" method="post">
+            <button>회원탈퇴</button>
+        </form>
     </div>
 </center>
 </body>

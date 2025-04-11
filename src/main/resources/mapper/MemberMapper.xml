@@ -2,26 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.practice.simple_board.member.mapper.MemberMapper">
-    <insert id="join" parameterType="com.practice.simple_board.member.vo.MemberVO">
-        insert into member(member_id, password, name, phone, email, create_dt)
-        values(#{memberId}, #{password}, #{name}, #{phone}, #{email}, now())
+    <insert id="join" parameterType="MemberVO">
+        insert into member(member_id, password, name, phone, email, create_dt, delete_yn)
+        values(#{memberId}, #{password}, #{name}, #{phone}, #{email}, now(), 'N')
     </insert>
 
-    <select id="login" parameterType="com.practice.simple_board.member.vo.MemberVO" resultType="com.practice.simple_board.member.vo.MemberVO">
-        select id, member_id, password, name, phone, email, create_dt, update_dt
+    <select id="login" parameterType="MemberVO" resultType="MemberVO">
+        select id, member_id, password, name, phone, email, create_dt, update_dt, delete_yn
         from member
-        where member_id = #{memberId} and password = #{password}
+        where member_id = #{memberId} and password = #{password} and delete_yn = 'N'
     </select>
 
-    <select id="selectOneByMemberId" parameterType="String" resultType="com.practice.simple_board.member.vo.MemberVO">
+    <select id="selectOneByMemberId" parameterType="String" resultType="MemberVO">
         select id, member_id, password, name, phone, email, create_dt, update_dt
         from member
         where member_id = #{memberId}
     </select>
 
-    <update id="memberUpdate" parameterType="com.practice.simple_board.member.vo.MemberVO">
+    <update id="memberUpdate" parameterType="MemberVO">
         update member
-        set password = #{password}, phone = #{phone}, email = #{email}, update_dt = #{updateDt}
+        set password = #{password}, phone = #{phone}, email = #{email}, update_dt = now()
+        where member_id = #{memberId}
+    </update>
+
+    <update id="memberDelete" parameterType="MemberVO">
+        update member
+        set delete_yn = 'Y', update_dt = now()
         where member_id = #{memberId}
     </update>
 </mapper>

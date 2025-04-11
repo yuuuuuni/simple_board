@@ -31,8 +31,10 @@ public class MemberService {
         }
             dbMemberVO.setPhone(memberVO.getPhone());
             dbMemberVO.setEmail(memberVO.getEmail());
-            dbMemberVO.setUpdateDt(LocalDateTime.now());
             memberMapper.memberUpdate(dbMemberVO);
+    }
 
+    public void memberDelete(MemberVO memberVO) {
+        memberMapper.memberDelete(memberVO);
     }
 }

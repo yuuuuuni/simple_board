@@ -36,9 +36,9 @@ public class MemberController {
     public String login(@ModelAttribute MemberVO memberVO, HttpSession session) {
         MemberVO loginVO = memberService.login(memberVO);
 
-        if (loginVO == null) { //아이디와 패스워드가 틀린 경우
+        if (loginVO == null) { //아이디와 패스워드가 틀린 경우, 탈퇴여부가 N이 아닌 경우
             return "redirect:/member/login";
-        } else { //아이디와 패스워드가 맞는 경우
+        } else { //아이디와 패스워드가 맞는 경우, 탈퇴여부가 N인 경우
             session.setAttribute("member", loginVO);
             return "redirect:/";
         }
@@ -70,5 +70,12 @@ public class MemberController {
         MemberVO dbMemberVO = memberService.selectOneByMemberId(memberId);
         memberService.memberUpdate(dbMemberVO, memberVO);
         return "redirect:/member/mypage/{memberId}";
+    }
+
+    @PostMapping("/mypage/{memberId}/delete")
+    public String memberDelete(@PathVariable("memberId") String memberId) {
+        MemberVO memberVO = memberService.selectOneByMemberId(memberId);
+        memberService.memberDelete(memberVO);
+        return "redirect:/member/login";
     }
 }

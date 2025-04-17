@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 상세</title>
+</head>
+<body>
+    <center>
+        <h1>게시글 상세</h1>
+
+        <table>
+            <tr>
+                <th>번호</th>
+                <td th:text="${board.id}"></td>
+            </tr>
+            <tr>
+                <th>제목</th>
+                <td th:text="${board.title}"></td>
+            </tr>
+            <tr>
+                <th>내용</th>
+                <td th:text="${board.content}"></td>
+            </tr>
+            <tr>
+                <th>작성자</th>
+                <td th:text="${board.author}"></td>
+            </tr>
+            <tr>
+                <th>작성일시</th>
+                <td th:text="${board.createDt}"></td>
+            </tr>
+            <tr>
+                <th>수정일시</th>
+                <td th:text="${board.updateDt}"></td>
+            </tr>
+            <tr>
+                <th>조회수</th>
+                <td th:text="${board.hit}"></td>
+            </tr>
+        </table>
+    </center>
+</body>
+</html>

@@ -10,4 +10,6 @@ public interface BoardMapper {
     void create(BoardVO boardVO);
 
     List<BoardVO> selectAll();
+
+    BoardVO selectOneById(Long id);
 }

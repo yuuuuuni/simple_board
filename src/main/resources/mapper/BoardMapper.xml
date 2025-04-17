@@ -12,4 +12,10 @@
         from board
         where delete_yn = 'N'
     </select>
+
+    <select id="selectOneById" parameterType="Long" resultType="BoardVO">
+        select id, title, content, author, create_dt, update_dt, delete_yn, hit
+        from board
+        where id = #{id}
+    </select>
 </mapper>

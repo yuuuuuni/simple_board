@@ -21,4 +21,8 @@ public class BoardService {
     public List<BoardVO> selectAll() {
         return boardMapper.selectAll();
     }
+
+    public BoardVO selectOneById(Long id) {
+        return boardMapper.selectOneById(id);
+    }
 }

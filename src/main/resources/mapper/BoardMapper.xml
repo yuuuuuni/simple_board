@@ -6,4 +6,10 @@
         insert into board(title, content, author, create_dt, delete_yn, hit)
         values(#{title}, #{content}, #{author}, now(), 'N', 0)
     </insert>
+
+    <select id="selectAll" resultType="BoardVO">
+        select id, title, content, author, create_dt, update_dt, delete_yn, hit
+        from board
+        where delete_yn = 'N'
+    </select>
 </mapper>

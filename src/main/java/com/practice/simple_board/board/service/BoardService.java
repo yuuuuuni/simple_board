@@ -6,6 +6,8 @@ import com.practice.simple_board.member.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class BoardService {
@@ -14,5 +16,9 @@ public class BoardService {
     public void create(BoardVO boardVO, MemberVO authorVO) {
         boardVO.setAuthor(authorVO.getMemberId());
         boardMapper.create(boardVO);
+    }
+
+    public List<BoardVO> selectAll() {
+        return boardMapper.selectAll();
     }
 }

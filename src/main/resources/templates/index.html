@@ -10,7 +10,12 @@
 
     <div th:if="${member != null}">
       <h2><span th:text="${member.memberId}"></span>님 환영합니다.</h2>
-      <button><a th:href="@{|/member/mypage/${member.memberId}|}">마이페이지</a></button>
+      <div>
+        <button><a th:href="@{/board/list}">게시글 목록</a></button>
+      </div>
+      <div>
+        <button><a th:href="@{|/member/mypage/${member.memberId}|}">마이페이지</a></button>
+      </div>
       <form th:action="@{/member/logout}" method="post">
         <button>로그아웃</button>
       </form>

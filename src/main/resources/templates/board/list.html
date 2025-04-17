@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 목록</title>
+    <style>
+        th, td {
+            text-align : center;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>게시글 목록</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>글번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일시</th>
+                    <th>조회수</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="board : ${boards}">
+                    <td th:text="${board.id}"></td>
+                    <td th:text="${board.title}"></td>
+                    <td th:text="${board.author}"></td>
+                    <td th:text="${board.createDt}"></td>
+                    <td th:text="${board.hit}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+</body>
+</html>

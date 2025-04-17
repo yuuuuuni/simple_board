@@ -6,10 +6,13 @@ import com.practice.simple_board.member.vo.MemberVO;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -27,5 +30,12 @@ public class BoardController {
         MemberVO authorVO = (MemberVO) session.getAttribute("member");
         boardService.create(boardVO, authorVO);
         return "redirect:/";
+    }
+
+    @GetMapping("/list")
+    public String boardList(Model model) {
+        List<BoardVO> boards = boardService.selectAll();
+        model.addAttribute("boards", boards);
+        return "board/list";
     }
 }

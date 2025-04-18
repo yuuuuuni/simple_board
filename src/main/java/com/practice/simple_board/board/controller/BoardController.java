@@ -26,7 +26,7 @@ public class BoardController {
     public String create(@ModelAttribute BoardVO boardVO, HttpSession session) {
         MemberVO authorVO = (MemberVO) session.getAttribute("member");
         boardService.create(boardVO, authorVO);
-        return "redirect:/";
+        return "redirect:/board/list";
     }
 
     @GetMapping("/list")

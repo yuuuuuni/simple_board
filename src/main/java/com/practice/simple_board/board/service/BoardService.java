@@ -27,9 +27,7 @@ public class BoardService {
     }
 
     public void updateHit(BoardVO boardVO) {
-        int hit = boardVO.getHit();
-        hit++;
-        boardVO.setHit(hit);
+        boardVO.setHit(boardVO.getHit()+1);
         boardMapper.updateHit(boardVO);
     }
 }

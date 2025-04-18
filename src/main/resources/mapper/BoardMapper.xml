@@ -11,6 +11,7 @@
         select id, title, content, author, create_dt, update_dt, delete_yn, hit
         from board
         where delete_yn = 'N'
+        order by id desc;
     </select>
 
     <select id="selectOneById" parameterType="Long" resultType="BoardVO">
@@ -18,4 +19,10 @@
         from board
         where id = #{id}
     </select>
+
+    <update id="updateHit" parameterType="BoardVO">
+        update board
+        set hit = #{hit}
+        where id = #{id}
+    </update>
 </mapper>

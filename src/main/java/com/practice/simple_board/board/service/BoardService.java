@@ -25,4 +25,11 @@ public class BoardService {
     public BoardVO selectOneById(Long id) {
         return boardMapper.selectOneById(id);
     }
+
+    public void updateHit(BoardVO boardVO) {
+        int hit = boardVO.getHit();
+        hit++;
+        boardVO.setHit(hit);
+        boardMapper.updateHit(boardVO);
+    }
 }

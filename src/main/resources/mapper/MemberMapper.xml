@@ -16,7 +16,7 @@
     <select id="selectOneByMemberId" parameterType="String" resultType="MemberVO">
         select id, member_id, password, name, phone, email, create_dt, update_dt
         from member
-        where member_id = #{memberId}
+        where member_id = #{memberId} and delete_yn = 'N'
     </select>
 
     <update id="update" parameterType="MemberVO">

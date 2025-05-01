@@ -57,4 +57,11 @@ public class BoardController {
         boardService.update(dbBoardVO, boardVO);
         return "redirect:/board/detail/{id}";
     }
+
+    @PostMapping("/detail/{id}/delete")
+    public String boardDelete(@PathVariable("id") Long id) {
+        BoardVO boardVO = boardService.selectOneById(id);
+        boardService.delete(boardVO);
+        return "redirect:/board/list";
+    }
 }

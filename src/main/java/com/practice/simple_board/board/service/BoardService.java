@@ -37,4 +37,8 @@ public class BoardService {
         dbBoardVO.setContent(boardVO.getContent());
         boardMapper.update(dbBoardVO);
     }
+
+    public void delete(BoardVO boardVO) {
+        boardMapper.delete(boardVO);
+    }
 }

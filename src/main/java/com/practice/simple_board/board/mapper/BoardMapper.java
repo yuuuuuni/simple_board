@@ -16,4 +16,6 @@ public interface BoardMapper {
     void updateHit(BoardVO boardVO);
 
     void update(BoardVO dbBoardVO);
+
+    void delete(BoardVO boardVO);
 }

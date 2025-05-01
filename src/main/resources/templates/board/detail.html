@@ -40,6 +40,9 @@
         </table>
         <div>
             <button><a th:href="@{|/board/detail/${board.id}/update|}">글 수정하기</a></button>
+            <form th:action="@{|/board/detail/${board.id}/delete|}" method="post">
+                <button>글 삭제하기</button>
+            </form>
         </div>
     </center>
 </body>

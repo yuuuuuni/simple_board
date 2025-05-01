@@ -31,4 +31,10 @@
         set title = #{title}, content = #{content}, update_dt = now()
         where id = #{id}
     </update>
+
+    <update id="delete" parameterType="BoardVO">
+        update board
+        set delete_yn = 'Y', update_dt = now()
+        where id = #{id}
+    </update>
 </mapper>

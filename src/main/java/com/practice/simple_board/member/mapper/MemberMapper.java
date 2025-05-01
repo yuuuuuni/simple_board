@@ -11,7 +11,7 @@ public interface MemberMapper {
 
     MemberVO selectOneByMemberId(String memberId);
 
-    void memberUpdate(MemberVO dbMemberVO);
+    void update(MemberVO dbMemberVO);
 
-    void memberDelete(MemberVO memberVO);
+    void delete(MemberVO memberVO);
 }

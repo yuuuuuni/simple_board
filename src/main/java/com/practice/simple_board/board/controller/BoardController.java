@@ -18,12 +18,12 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/create")
-    public String createForm() {
+    public String boardCreateForm() {
         return "board/create";
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute BoardVO boardVO, HttpSession session) {
+    public String boardCreate(@ModelAttribute BoardVO boardVO, HttpSession session) {
         MemberVO authorVO = (MemberVO) session.getAttribute("member");
         boardService.create(boardVO, authorVO);
         return "redirect:/board/list";

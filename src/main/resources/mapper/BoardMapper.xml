@@ -11,7 +11,7 @@
         select id, title, content, author, create_dt, update_dt, delete_yn, hit
         from board
         where delete_yn = 'N'
-        order by id desc;
+        order by id desc
     </select>
 
     <select id="selectOneById" parameterType="Long" resultType="BoardVO">
@@ -28,7 +28,7 @@
 
     <update id="update" parameterType="BoardVO">
         update board
-        set title = #{title}, content = #{content}, update_dt = #{updateDt}
+        set title = #{title}, content = #{content}, update_dt = now()
         where id = #{id}
     </update>
 </mapper>

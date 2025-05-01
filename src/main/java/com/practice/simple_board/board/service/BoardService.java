@@ -35,7 +35,6 @@ public class BoardService {
     public void update(BoardVO dbBoardVO, BoardVO boardVO) {
         dbBoardVO.setTitle(boardVO.getTitle());
         dbBoardVO.setContent(boardVO.getContent());
-        dbBoardVO.setUpdateDt(LocalDateTime.now());
         boardMapper.update(dbBoardVO);
     }
 }

@@ -19,13 +19,13 @@
         where member_id = #{memberId}
     </select>
 
-    <update id="memberUpdate" parameterType="MemberVO">
+    <update id="update" parameterType="MemberVO">
         update member
         set password = #{password}, phone = #{phone}, email = #{email}, update_dt = now()
         where member_id = #{memberId}
     </update>
 
-    <update id="memberDelete" parameterType="MemberVO">
+    <update id="delete" parameterType="MemberVO">
         update member
         set delete_yn = 'Y', update_dt = now()
         where member_id = #{memberId}

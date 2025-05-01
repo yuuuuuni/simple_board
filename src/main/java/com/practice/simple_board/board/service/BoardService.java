@@ -6,6 +6,7 @@ import com.practice.simple_board.member.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -29,5 +30,12 @@ public class BoardService {
     public void updateHit(BoardVO boardVO) {
         boardVO.setHit(boardVO.getHit()+1);
         boardMapper.updateHit(boardVO);
+    }
+
+    public void update(BoardVO dbBoardVO, BoardVO boardVO) {
+        dbBoardVO.setTitle(boardVO.getTitle());
+        dbBoardVO.setContent(boardVO.getContent());
+        dbBoardVO.setUpdateDt(LocalDateTime.now());
+        boardMapper.update(dbBoardVO);
     }
 }

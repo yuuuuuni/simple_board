@@ -43,4 +43,18 @@ public class BoardController {
         model.addAttribute("board", boardVO);
         return "board/detail";
     }
+
+    @GetMapping("/detail/{id}/update")
+    public String boardUpdateForm(@PathVariable("id") Long id, Model model) {
+        BoardVO boardVO = boardService.selectOneById(id);
+        model.addAttribute("board", boardVO);
+        return "board/update";
+    }
+
+    @PostMapping("/detail/{id}/update")
+    public String boardUpdate(@PathVariable("id") Long id, @ModelAttribute BoardVO boardVO) {
+        BoardVO dbBoardVO = boardService.selectOneById(id);
+        boardService.update(dbBoardVO, boardVO);
+        return "redirect:/board/detail/{id}";
+    }
 }

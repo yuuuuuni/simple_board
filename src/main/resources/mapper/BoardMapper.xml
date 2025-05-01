@@ -25,4 +25,10 @@
         set hit = #{hit}
         where id = #{id}
     </update>
+
+    <update id="update" parameterType="BoardVO">
+        update board
+        set title = #{title}, content = #{content}, update_dt = #{updateDt}
+        where id = #{id}
+    </update>
 </mapper>

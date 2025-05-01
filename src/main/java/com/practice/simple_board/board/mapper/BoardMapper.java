@@ -14,4 +14,6 @@ public interface BoardMapper {
     BoardVO selectOneById(Long id);
 
     void updateHit(BoardVO boardVO);
+
+    void update(BoardVO dbBoardVO);
 }

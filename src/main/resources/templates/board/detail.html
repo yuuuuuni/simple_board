@@ -10,12 +10,8 @@
 
         <table>
             <tr>
-                <th>번호</th>
+                <th>글번호</th>
                 <td th:text="${board.id}"></td>
-            </tr>
-            <tr>
-                <th>작성자</th>
-                <td th:text="${board.author}"></td>
             </tr>
             <tr>
                 <th>제목</th>
@@ -24,6 +20,10 @@
             <tr>
                 <th>내용</th>
                 <td th:text="${board.content}"></td>
+            </tr>
+            <tr>
+                <th>작성자</th>
+                <td th:text="${board.author}"></td>
             </tr>
             <tr>
                 <th>작성일시</th>

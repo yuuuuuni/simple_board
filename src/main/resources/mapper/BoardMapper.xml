@@ -37,4 +37,12 @@
         set delete_yn = 'Y', update_dt = now()
         where id = #{id}
     </update>
+
+    <select id="search" parameterType="String" resultType="BoardVO">
+        select id, title, content, author, create_dt, update_dt, delete_yn, hit
+        from board
+        where (title like '%'||#{kw}||'%' or content like '%'||#{kw}||'%' or author like '%'||#{kw}||'%')
+        and delete_yn = 'N'
+        order by id desc
+    </select>
 </mapper>

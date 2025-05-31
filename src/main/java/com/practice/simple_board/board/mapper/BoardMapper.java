@@ -18,4 +18,6 @@ public interface BoardMapper {
     void update(BoardVO dbBoardVO);
 
     void delete(BoardVO boardVO);
+
+    List<BoardVO> search(String kw);
 }

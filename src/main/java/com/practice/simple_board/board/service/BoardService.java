@@ -41,4 +41,8 @@ public class BoardService {
     public void delete(BoardVO boardVO) {
         boardMapper.delete(boardVO);
     }
+
+    public List<BoardVO> search(String kw) {
+       return boardMapper.search(kw);
+    }
 }

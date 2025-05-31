@@ -13,6 +13,10 @@
     <center>
         <h1>게시글 목록</h1>
 
+        <form th:action="@{/board/list}" method="get">
+            <input type="text" name="kw" id="kw">
+            <button>검색</button>
+        </form>
         <table>
             <thead>
                 <tr>

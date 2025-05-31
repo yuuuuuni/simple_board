@@ -5,6 +5,7 @@ import com.practice.simple_board.board.vo.BoardVO;
 import com.practice.simple_board.member.vo.MemberVO;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +31,8 @@ public class BoardController {
     }
 
     @GetMapping("/list")
-    public String boardList(Model model) {
-        List<BoardVO> boards = boardService.selectAll();
+    public String boardList(Model model, @RequestParam(value = "kw", required = false, defaultValue = "") String kw) {
+        List<BoardVO> boards = boardService.search(kw);
         model.addAttribute("boards", boards);
         return "board/list";
     }

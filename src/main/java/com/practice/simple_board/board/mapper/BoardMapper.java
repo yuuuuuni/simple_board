@@ -2,6 +2,7 @@ package com.practice.simple_board.board.mapper;
 
 import com.practice.simple_board.board.vo.BoardVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -19,5 +20,7 @@ public interface BoardMapper {
 
     void delete(BoardVO boardVO);
 
-    List<BoardVO> search(String kw);
+    List<BoardVO> search(@Param("kw") String kw, @Param("size") int size, @Param("offset") int offset);
+
+    int countBoards(String kw);
 }

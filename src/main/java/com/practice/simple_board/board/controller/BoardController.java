@@ -6,6 +6,7 @@ import com.practice.simple_board.member.vo.MemberVO;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/board")
+@Slf4j
 public class BoardController {
     private final BoardService boardService;
 
@@ -31,8 +33,17 @@ public class BoardController {
     }
 
     @GetMapping("/list")
-    public String boardList(Model model, @RequestParam(value = "kw", required = false, defaultValue = "") String kw) {
-        List<BoardVO> boards = boardService.search(kw);
+    //page : 현재 몇페이지에 있는지의 변수(초기값은 1페이지에 있어야 하므로 defaultValue = "1" 설정)
+    //size : 한 페이지에 몇개씩 보여줄지의 변수(한 페이지당 5개씩 보여줄 것이므로 defaultValue = "5" 설정)
+    //count : 리스트 전체에 게시물이 몇개가 있는지의 변수(구해야함)
+    //totalPages : 총 페이지 갯수(구해야함, count / size)
+    public String boardList(Model model,
+                            @RequestParam(value = "kw", required = false, defaultValue = "") String kw,
+                            @RequestParam(value = "page", required = false, defaultValue = "1") int page,
+                            @RequestParam(value = "size", required = false, defaultValue = "5") int size) {
+        List<BoardVO> boards = boardService.search(kw, page, size);
+        int count = boardService.countBoards(kw);
+        int totalPages = (int) Math.ceil((double) count / size);
         model.addAttribute("boards", boards);
         return "board/list";
     }

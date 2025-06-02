@@ -4,13 +4,14 @@ import com.practice.simple_board.board.mapper.BoardMapper;
 import com.practice.simple_board.board.vo.BoardVO;
 import com.practice.simple_board.member.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class BoardService {
     private final BoardMapper boardMapper;
 
@@ -28,7 +29,7 @@ public class BoardService {
     }
 
     public void updateHit(BoardVO boardVO) {
-        boardVO.setHit(boardVO.getHit()+1);
+        boardVO.setHit(boardVO.getHit() + 1);
         boardMapper.updateHit(boardVO);
     }
 
@@ -42,7 +43,12 @@ public class BoardService {
         boardMapper.delete(boardVO);
     }
 
-    public List<BoardVO> search(String kw) {
-       return boardMapper.search(kw);
+    public List<BoardVO> search(String kw, int page, int size) {
+        int offset = (page - 1) * size; //이전 페이지들의 게시글 갯수
+        return boardMapper.search(kw, size, offset);
+    }
+
+    public int countBoards(String kw) {
+        return boardMapper.countBoards(kw);
     }
 }

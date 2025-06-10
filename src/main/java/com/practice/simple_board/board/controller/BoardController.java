@@ -35,7 +35,7 @@ public class BoardController {
     @GetMapping("/list")
     //page : 현재 몇페이지에 있는지의 변수(초기값은 1페이지에 있어야 하므로 defaultValue = "1" 설정)
     //size : 한 페이지에 몇개씩 보여줄지의 변수(한 페이지당 5개씩 보여줄 것이므로 defaultValue = "5" 설정)
-    //count : 리스트 전체에 게시물이 몇개가 있는지의 변수(구해야함)
+    //count : 게시물이 총 몇개가 있는지의 변수(쿼리를 통해 구해야함)
     //totalPages : 총 페이지 갯수(구해야함, count / size)
     public String boardList(Model model,
                             @RequestParam(value = "kw", required = false, defaultValue = "") String kw,

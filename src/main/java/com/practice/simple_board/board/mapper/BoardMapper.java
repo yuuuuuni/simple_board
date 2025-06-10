@@ -20,6 +20,7 @@ public interface BoardMapper {
 
     void delete(BoardVO boardVO);
 
+    //전달인자 값이 여러개인 경우 @Param을 통해 mapper.xml의 변수를 지정해줘야함
     List<BoardVO> search(@Param("kw") String kw, @Param("size") int size, @Param("offset") int offset);
 
     int countBoards(String kw);

@@ -44,7 +44,7 @@
         where (title like '%'||#{kw}||'%' or content like '%'||#{kw}||'%' or author like '%'||#{kw}||'%')
         and delete_yn = 'N'
         order by id desc
-        limit #{size} offset #{offset}
+        limit #{size} offset #{offset} <!-- #{offset} 만큼 뛰어넘고 #{size} 만큼만 가져와줘 -->
     </select>
 
     <select id="countBoards" parameterType="String" resultType="int">

@@ -36,15 +36,21 @@ public class BoardController {
     //page : 현재 몇페이지에 있는지의 변수(초기값은 1페이지에 있어야 하므로 defaultValue = "1" 설정)
     //size : 한 페이지에 몇개씩 보여줄지의 변수(한 페이지당 5개씩 보여줄 것이므로 defaultValue = "5" 설정)
     //count : 게시물이 총 몇개가 있는지의 변수(쿼리를 통해 구해야함)
-    //totalPages : 총 페이지 갯수(구해야함, count / size)
+    //totalPages : 총 페이지 갯수(Math.ceil() 함수를 통해 구해야함, count / size)
+    /* required 뜻 : url '/board/list' 뒤에 '?page=1&size=5'와 같이 파라미터가 적혀 있어야만 페이지 접속이 되냐(true), 없어도 접속이 되냐(false)
+    즉, url에 해당 파라미터가 필수로 들어와야지만 페이지가 뜨냐(true) or 들어오지 않아도 뜨냐(false)의 의미 */
     public String boardList(Model model,
                             @RequestParam(value = "kw", required = false, defaultValue = "") String kw,
                             @RequestParam(value = "page", required = false, defaultValue = "1") int page,
                             @RequestParam(value = "size", required = false, defaultValue = "5") int size) {
-        List<BoardVO> boards = boardService.search(kw, page, size);
-        int count = boardService.countBoards(kw);
-        int totalPages = (int) Math.ceil((double) count / size);
+        List<BoardVO> boards = boardService.search(kw, page, size); //검색 & 페이징이 적용된 게시글 리스트
+        int count = boardService.countBoards(kw); //검색이 적용된 전체 게시글 수
+        int totalPages = (int) Math.ceil((double) count / size); //검색이 적용된 전체 페이지 수
         model.addAttribute("boards", boards);
+        model.addAttribute("kw", kw);
+        model.addAttribute("page", page);
+        model.addAttribute("size", size);
+        model.addAttribute("totalPages", totalPages);
         return "board/list";
     }
 

@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>게시글 목록</title>
+    <!-- bootstrap css 적용(static 폴더 아래의 css 경로 적어주면 됨) -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <style>
         th, td {
             text-align : center;
@@ -32,7 +34,7 @@
                     <td th:text="${board.id}"></td>
                     <td><a th:href="@{|/board/detail/${board.id}|}" th:text="${board.title}"></a></td>
                     <td th:text="${board.author}"></td>
-                    <td th:text="${board.createDt}"></td>
+                    <td th:text="${#temporals.format(board.createDt, 'yyyy-MM-dd')}"></td>
                     <td th:text="${board.hit}"></td>
                 </tr>
             </tbody>
@@ -40,6 +42,37 @@
         <div>
             <button><a th:href="@{/board/create}">글 작성하기</a></button>
         </div>
+        <!-- 페이징 영역 시작 -->
+        <div th:if="${count >= 0}">
+            <ul class="pagination justify-content-center">
+                <!-- 이전 -->
+                <li th:if="${page == 1}" class="page-item" th:classappend="${page == 1} ? 'disabled'">
+                    <a class="page-link"
+                       th:href="@{|/board/list?kw=${kw}&page=${page}&size=${size}|}">이전</a>
+                </li>
+
+                <li th:if="${page > 1}" class="page-item" th:classappend="${page == 0} ? 'disabled'">
+                    <a class="page-link"
+                       th:href="@{|/board/list?kw=${kw}&page=${page - 1}&size=${size}|}">이전</a>
+                </li>
+                <!-- 페이지 번호 -->
+                <li class="page-item"
+                    th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
+                    th:if="${i >= page - 2 and i <= page + 2}"
+                    th:classappend="${i == page} ? 'active'">
+                    <a class="page-link"
+                       th:href="@{|/board/list?kw=${kw}&page=${i + 1}&size=${size}|}"
+                       th:text="${i + 1}"></a>
+                </li>
+
+                <!-- 다음 -->
+                <li class="page-item" th:classappend="${page >= totalPages - 1} ? 'disabled'">
+                    <a class="page-link"
+                       th:href="@{|/board/list?kw=${kw}&page=${page + 1}&size=${size}|}">다음</a>
+                </li>
+            </ul>
+        </div>
+        <!-- 페이징 영역 끝 -->
     </center>
 </body>
 </html>

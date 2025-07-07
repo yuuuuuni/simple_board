@@ -32,7 +32,7 @@
                     <td th:text="${board.id}"></td>
                     <td><a th:href="@{|/board/detail/${board.id}|}" th:text="${board.title}"></a></td>
                     <td th:text="${board.author}"></td>
-                    <td th:text="${board.createDt}"></td>
+                    <td th:text="${#temporals.format(board.createDt, 'yyyy-MM-dd HH:mm')}"></td>
                     <td th:text="${board.hit}"></td>
                 </tr>
             </tbody>

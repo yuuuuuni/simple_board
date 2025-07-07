@@ -43,7 +43,7 @@ public class BoardController {
                             @RequestParam(value = "kw", required = false, defaultValue = "") String kw,
                             @RequestParam(value = "page", required = false, defaultValue = "1") int page,
                             @RequestParam(value = "size", required = false, defaultValue = "5") int size) {
-        List<BoardVO> boards = boardService.search(kw, page, size); //검색 & 페이징이 적용된 게시글 리스트
+        List<BoardVO> boards = boardService.search(kw, page, size); //검색 & 페이징이 적용된 현재 페이지의 게시글 리스트
         int count = boardService.countBoards(kw); //검색이 적용된 전체 게시글 수
         int totalPages = (int) Math.ceil((double) count / size); //검색이 적용된 전체 페이지 수
         model.addAttribute("boards", boards);

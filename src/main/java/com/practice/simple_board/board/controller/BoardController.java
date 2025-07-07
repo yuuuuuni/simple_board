@@ -50,6 +50,7 @@ public class BoardController {
         model.addAttribute("kw", kw);
         model.addAttribute("page", page);
         model.addAttribute("size", size);
+        model.addAttribute("count", count);
         model.addAttribute("totalPages", totalPages);
         return "board/list";
     }
